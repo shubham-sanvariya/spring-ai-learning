@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ai.lesson2_advisors.service.ChatService;
 
+import reactor.core.publisher.Flux;
+
 @RestController
 @RequestMapping
 public class ChatController {
@@ -25,5 +27,8 @@ public class ChatController {
         return ResponseEntity.ok(chatService.chatTemplate(q));
     }
 
-    
+    @GetMapping("/stream-chat")
+    public ResponseEntity<Flux<String>> streamchat(@RequestParam("q") String query){
+        return ResponseEntity.ok(chatService.streamchat(query));
+    }
 }
