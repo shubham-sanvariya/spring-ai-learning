@@ -23,6 +23,7 @@ public class AiConfig {
             OllamaChatOptions.builder()
             .model("deepseek-coder:latest")
             .temperature(0.7)
+            .numPredict(1000)
             .build()
         )
         .build();
