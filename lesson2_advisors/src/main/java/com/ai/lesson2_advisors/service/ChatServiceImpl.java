@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
+import reactor.core.publisher.Flux;
+
 @Service
 public class ChatServiceImpl implements ChatService{
 
@@ -33,6 +35,17 @@ public class ChatServiceImpl implements ChatService{
                 .user(user -> user.text(this.userMessage).param("concept", query))
                 .call()
                 .content();
+    }
+
+
+
+    @Override
+    public Flux<String> streamchat(String query) {
+        return chatClient.prompt()
+            .system(s -> s.text(systemMessage))
+            .user(u -> u.text(userMessage).param("concept",query))
+            .stream()
+            .content();
     }
     
 }
