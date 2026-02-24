@@ -16,6 +16,7 @@ import com.ai.lessaon1.service.AiService;
 @RequestMapping
 public class ChatController {
 
+    @SuppressWarnings("unused")
     private final ChatClient geminiChatClient;
     private final ChatClient ollamChatClient;
     private final AiService aiService;
