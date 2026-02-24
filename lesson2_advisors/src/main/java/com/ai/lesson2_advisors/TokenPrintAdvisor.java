@@ -26,9 +26,10 @@ public class TokenPrintAdvisor implements CallAdvisor, StreamAdvisor{
     }
 
     @Override
-    public Flux<ChatClientResponse> adviseStream(ChatClientRequest arg0, StreamAdvisorChain arg1) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'adviseStream'");
+    public Flux<ChatClientResponse> adviseStream(ChatClientRequest chatClientRequest, StreamAdvisorChain streamAdvisorChain) {
+        Flux<ChatClientResponse> chatClientResponseFlux = streamAdvisorChain.nextStream(chatClientRequest);
+
+        return chatClientResponseFlux;
     }
 
     @Override
